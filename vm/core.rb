@@ -49,6 +49,11 @@ class VM::Core
     @reg[dst] = @mem[@reg[src]]
   end
 
+  # Move data from register to memory.
+  def mov_reg_to_addr addr, reg
+    @mem[addr] = @reg[reg]
+  end
+
   # Return the value of a register.
   # This doesn't seem VM-like :(
   def read_reg reg
