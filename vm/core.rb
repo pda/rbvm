@@ -14,6 +14,20 @@ class VM::Core
 
   attr_reader :cis
 
+  def run
+    loop do
+      op = @mem[@reg[:op]]
+      break unless op.is_a? Array
+      #p op
+      send *op
+      add_imm_to_reg :op, 1
+    end
+  end
+
+  def method_missing method, *params
+    cis.send method, *params
+  end
+
   # Add immediate value to register.
   def add_imm_to_reg reg, imm
     @reg[reg] += imm
