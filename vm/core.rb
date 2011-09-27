@@ -10,28 +10,14 @@ class VM::Core
     end
   end
 
-  # Move immediate value into address pointed to by register.
-  def mov_imm_to_reg_addr reg, imm
-    @mem[@reg[reg]] = imm
-  end
-
-  # Move immediate value to register.
-  def mov_imm_to_reg reg, imm
-    @reg[reg] = imm
-  end
-
-  def mov_imm_to_addr addr, imm
-    @mem[addr] = imm
-  end
-
   # Add immediate value to register.
   def add_imm_to_reg reg, imm
     @reg[reg] += imm
   end
 
-  # Move value at address pointed to by src register into dest register.
-  def mov_reg_addr_to_reg dst, src
-    @reg[dst] = @mem[@reg[src]]
+  # Software interrupt.
+  def int imm
+    @mem[imm].call
   end
 
   # Move a handler Proc to the specified address.
@@ -39,9 +25,24 @@ class VM::Core
     @mem[addr] = handler
   end
 
-  # Software interrupt.
-  def int imm
-    @mem[imm].call
+  # Move immediate value to memory.
+  def mov_imm_to_addr addr, imm
+    @mem[addr] = imm
+  end
+
+  # Move immediate value to register.
+  def mov_imm_to_reg reg, imm
+    @reg[reg] = imm
+  end
+
+  # Move immediate value into address pointed to by register.
+  def mov_imm_to_reg_addr reg, imm
+    @mem[@reg[reg]] = imm
+  end
+
+  # Move value at address pointed to by src register into dest register.
+  def mov_reg_addr_to_reg dst, src
+    @reg[dst] = @mem[@reg[src]]
   end
 
   # Return the value of a register.
