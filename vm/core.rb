@@ -20,6 +20,10 @@ class VM::Core
     @reg[reg] = imm
   end
 
+  def mov_imm_to_addr addr, imm
+    @mem[addr] = imm
+  end
+
   # Add immediate value to register.
   def add_imm_to_reg reg, imm
     @reg[reg] += imm
