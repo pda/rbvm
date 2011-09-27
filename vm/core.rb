@@ -30,4 +30,14 @@ class VM::Core
     @reg[dst] = @mem[@reg[src]]
   end
 
+  # Move a handler Proc to the specified address.
+  def mov_handler_to_addr addr, handler
+    @mem[addr] = handler
+  end
+
+  # Software interrupt.
+  def int imm
+    @mem[imm].call
+  end
+
 end
