@@ -36,10 +36,15 @@ class VM::Kernel
     end
   end
 
+  # Reads length and address from stack.
+  # Writes <length> bytes from <address> to stdout.
   def syscall_write
-    vm.read_mem(vm.read_reg(:sp) + 1).times do |i|
-      putc vm.read_mem(vm.read_reg(:sp) + 2 + i)
+    buffer = ""
+    addr = vm.read_mem(vm.read_reg(:sp) + 1)
+    vm.read_mem(vm.read_reg(:sp) + 2).times do |i|
+      buffer << vm.read_mem(addr + i).chr
     end
+    print buffer
   end
 
 end
