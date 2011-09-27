@@ -1,13 +1,10 @@
-require_relative "cis"
-
 class VM::Kernel
 
   def initialize vm
     @vm = vm
-    @cis = VM::Cis.new(vm)
   end
 
-  attr_reader :vm, :cis
+  attr_reader :vm
 
   def run program
     register_interrupt_handlers

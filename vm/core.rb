@@ -1,4 +1,5 @@
 require_relative "memory"
+require_relative "cis"
 
 # Virtual Machine with RISC-like instruction set.
 class VM::Core
@@ -8,7 +9,10 @@ class VM::Core
     @reg = Struct.new(:sp, :a, :b, :c, :d).new.tap do |reg|
       reg.sp = @mem.size - 1
     end
+    @cis = VM::Cis.new(self)
   end
+
+  attr_reader :cis
 
   # Add immediate value to register.
   def add_imm_to_reg reg, imm
