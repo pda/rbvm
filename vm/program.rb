@@ -1,6 +1,6 @@
-require_relative "vm/cis"
+require_relative "cis"
 
-class Program
+class VM::Program
 
   def initialize vm
     @vm = vm

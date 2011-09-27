@@ -1,6 +1,6 @@
-require_relative "program"
+require_relative "vm/program"
 
-class HelloWorld < Program
+class HelloWorld < VM::Program
 
   def run
 
