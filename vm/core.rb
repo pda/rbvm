@@ -18,14 +18,17 @@ class VM::Core
     loop do
       op = @mem[@reg[:op]]
       break unless op.is_a? Array
-      #p op
       send *op
       add_imm_to_reg :op, 1
     end
   end
 
   def method_missing method, *params
-    cis.send method, *params
+    if cis.respond_to? method
+      cis.send method, *params
+    else
+      super
+    end
   end
 
   # Add immediate value to register.
