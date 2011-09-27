@@ -1,5 +1,4 @@
 class HelloWorld
-
   def run vm
 
     # Write string to memory, after reserved section.
@@ -17,5 +16,4 @@ class HelloWorld
     vm.add_imm_to_reg :sp, 2
 
   end
-
 end
