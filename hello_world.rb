@@ -1,8 +1,6 @@
-require_relative "vm/program"
+class HelloWorld
 
-class HelloWorld < VM::Program
-
-  def run
+  def run vm
 
     # Write string to memory, after reserved section.
     vm.cis.mov_str_to_addr 0x04, "Hello, world!\n"

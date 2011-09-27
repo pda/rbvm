@@ -8,7 +8,7 @@ class VM::Kernel
 
   def run program
     register_interrupt_handlers
-    program.run
+    program.run vm
   end
 
   private

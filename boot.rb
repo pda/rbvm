@@ -6,5 +6,5 @@ vm = VM::Core.new
 kernel = VM::Kernel.new(vm)
 
 require_relative "hello_world"
-kernel.run(HelloWorld.new(vm))
-kernel.run(HelloWorld.new(vm))
+kernel.run HelloWorld.new
+kernel.run HelloWorld.new
