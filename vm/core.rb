@@ -5,7 +5,7 @@ require_relative "cis"
 class VM::Core
 
   def initialize
-    @mem = VM::Memory.new(0x20)
+    @mem = VM::Memory.new(0x40)
     @reg = Struct.new(:sp, :a, :b).new.tap do |reg|
       reg.sp = @mem.size - 1
     end
