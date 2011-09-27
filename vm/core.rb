@@ -15,6 +15,11 @@ class VM::Core
     @mem[@reg[reg]] = imm
   end
 
+  # Move immediate value to register.
+  def mov_imm_to_reg reg, imm
+    @reg[reg] = imm
+  end
+
   # Add immediate value to register.
   def add_imm_to_reg reg, imm
     @reg[reg] += imm
