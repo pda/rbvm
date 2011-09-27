@@ -1,9 +1,10 @@
 require_relative "vm"
-require_relative "cis"
+require_relative "vm/core"
+require_relative "vm/cis"
 
-VM.new.tap do |vm|
+VM::Core.new.tap do |vm|
 
-  cis = Cis.new(vm)
+  cis = VM::Cis.new(vm)
 
   p vm
 

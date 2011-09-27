@@ -1,5 +1,5 @@
 # Complex instruction set.
-class Cis
+class VM::Cis
 
   def initialize vm
     @vm = vm
