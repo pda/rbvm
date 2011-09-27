@@ -1,3 +1,5 @@
+require_relative "cis"
+
 class VM::Kernel
 
   def initialize vm

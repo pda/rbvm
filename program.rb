@@ -1,3 +1,5 @@
+require_relative "vm/cis"
+
 class Program
 
   def initialize vm
