@@ -1,25 +1,25 @@
 require_relative "vm"
 require_relative "vm/core"
 require_relative "vm/cis"
+require_relative "vm/kernel"
 
 VM::Core.new.tap do |vm|
 
+  # Complex instructions (push, pop, etc)
   cis = VM::Cis.new(vm)
 
-  p vm
+  kernel = VM::Kernel.new(vm)
 
-  # Push "a", "d", "p" onto stack.
-  cis.push_imm "a"
-  cis.push_imm "d"
-  cis.push_imm "p"
+  # Push "pda\n" and its length onto stack.
+  cis.push_imm "\n".ord
+  cis.push_imm "a".ord
+  cis.push_imm "d".ord
+  cis.push_imm "p".ord
+  cis.push_imm 4
 
-  p vm
+  vm.mov_imm_to_reg :a, 4  # write()
+  vm.int 0x0
 
-  # Pop into :a, :b, :c registers.
-  cis.pop_reg :a
-  cis.pop_reg :b
-  cis.pop_reg :c
-
-  p vm
+  vm.add_imm_to_reg :sp, 5
 
 end
