@@ -40,4 +40,16 @@ class VM::Core
     @mem[imm].call
   end
 
+  # Return the value of a register.
+  # This doesn't seem VM-like :(
+  def read_reg reg
+    @reg[reg]
+  end
+
+  # Return the value of a memory location.
+  # This doesn't seem VM-like :(
+  def read_mem addr
+    @mem[addr]
+  end
+
 end
