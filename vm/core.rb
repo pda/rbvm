@@ -6,7 +6,7 @@ class VM::Core
 
   def initialize
     @mem = VM::Memory.new(0x20)
-    @reg = Struct.new(:sp, :a, :b, :c, :d).new.tap do |reg|
+    @reg = Struct.new(:sp, :a, :b).new.tap do |reg|
       reg.sp = @mem.size - 1
     end
     @cis = VM::Cis.new(self)
