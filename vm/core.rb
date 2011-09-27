@@ -1,7 +1,7 @@
 # Virtual Machine with RISC-like instruction set.
 class VM::Core
 
-  MEM_SIZE = 16
+  MEM_SIZE = 32
 
   def initialize
     @mem = Array.new MEM_SIZE, 0
