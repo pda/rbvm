@@ -1,12 +1,12 @@
+require_relative "memory"
+
 # Virtual Machine with RISC-like instruction set.
 class VM::Core
 
-  MEM_SIZE = 32
-
   def initialize
-    @mem = Array.new MEM_SIZE, 0
+    @mem = VM::Memory.new(0x20)
     @reg = Struct.new(:sp, :a, :b, :c, :d).new.tap do |reg|
-      reg.sp = MEM_SIZE - 1
+      reg.sp = @mem.size - 1
     end
   end
 
