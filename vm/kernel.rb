@@ -2,14 +2,10 @@ class VM::Kernel
 
   def initialize vm
     @vm = vm
+    register_interrupt_handlers
   end
 
   attr_reader :vm
-
-  def run program
-    register_interrupt_handlers
-    program.run vm
-  end
 
   private
 
