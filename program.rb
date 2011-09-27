@@ -1,34 +1,23 @@
 require_relative "vm"
+require_relative "cis"
 
 VM.new.tap do |vm|
 
-  p vm
-
-  # push "a"
-  vm.mov_imm_to_reg_addr :sp, "a"
-  vm.add_imm_to_reg :sp, -1
-
-  # push "d"
-  vm.mov_imm_to_reg_addr :sp, "d"
-  vm.add_imm_to_reg :sp, -1
-
-  # push "p"
-  vm.mov_imm_to_reg_addr :sp, "p"
-  vm.add_imm_to_reg :sp, -1
+  cis = Cis.new(vm)
 
   p vm
 
-  # pop into :a
-  vm.add_imm_to_reg :sp, 1
-  vm.mov_reg_addr_to_reg :a, :sp
+  # Push "a", "d", "p" onto stack.
+  cis.push_imm "a"
+  cis.push_imm "d"
+  cis.push_imm "p"
 
-  # pop into :b
-  vm.add_imm_to_reg :sp, 1
-  vm.mov_reg_addr_to_reg :b, :sp
+  p vm
 
-  # pop into :c
-  vm.add_imm_to_reg :sp, 1
-  vm.mov_reg_addr_to_reg :c, :sp
+  # Pop into :a, :b, :c registers.
+  cis.pop_reg :a
+  cis.pop_reg :b
+  cis.pop_reg :c
 
   p vm
 
