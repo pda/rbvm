@@ -3,12 +3,16 @@ class VM::Kernel
   def initialize vm
     @vm = vm
     @cis = VM::Cis.new(vm)
+  end
+
+  attr_reader :vm, :cis
+
+  def run program
     register_interrupt_handlers
+    program.run
   end
 
   private
-
-  attr_reader :vm, :cis
 
   # First four memory units are interrupt handlers.
   def register_interrupt_handlers
